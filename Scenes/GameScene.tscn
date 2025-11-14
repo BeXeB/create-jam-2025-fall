@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://dae6y6mg4c4as"]
+
+[ext_resource type="PackedScene" uid="uid://b85q64fkpwhg2" path="res://Player/Player.tscn" id="1_2wl7v"]
+[ext_resource type="Script" uid="uid://bydes134tpx6i" path="res://Scenes/Main.cs" id="1_3mbwn"]
+[ext_resource type="PackedScene" uid="uid://wrahcxjq7kow" path="res://Enemies/BaseEnemy.tscn" id="2_jwv4s"]
+[ext_resource type="Script" uid="uid://dl42lyk3bfm0p" path="res://DataTypes/MobWithLevelRequirements.cs" id="3_lohlh"]
+
+[sub_resource type="Resource" id="Resource_kilg5"]
+script = ExtResource("3_lohlh")
+mobPrefab = ExtResource("2_jwv4s")
+metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_3mbwn")
+mobsWithLevelRequirements = Array[Object]([SubResource("Resource_kilg5")])
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("1_2wl7v")]

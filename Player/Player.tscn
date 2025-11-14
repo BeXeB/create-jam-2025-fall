@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85q64fkpwhg2"]
+
+[ext_resource type="Texture2D" uid="uid://ck16iej2fusol" path="res://Assets/circle.png" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://fwxsnm3nb08y" path="res://Player/Player.cs" id="1_q3lat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qydi"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_q3lat")
+
+[node name="Player Area" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player Area"]
+scale = Vector2(0.13250001, 0.13250001)
+texture = ExtResource("1_3qydi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Area"]
+shape = SubResource("CircleShape2D_3qydi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="Player Area" to="." method="OnBodyEntered"]
