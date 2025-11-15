@@ -1,4 +1,5 @@
 using Godot;
+using MafiaGame.Interfaces;
 using System;
 
 [GlobalClass]

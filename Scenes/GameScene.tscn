@@ -1,18 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://dae6y6mg4c4as"]
+[gd_scene load_steps=14 format=3 uid="uid://dae6y6mg4c4as"]
 
 [ext_resource type="PackedScene" uid="uid://b85q64fkpwhg2" path="res://Player/Player.tscn" id="1_2wl7v"]
 [ext_resource type="Script" uid="uid://bydes134tpx6i" path="res://Scenes/Main.cs" id="1_3mbwn"]
 [ext_resource type="PackedScene" uid="uid://wrahcxjq7kow" path="res://Enemies/BaseEnemy.tscn" id="2_jwv4s"]
 [ext_resource type="Script" uid="uid://dl42lyk3bfm0p" path="res://DataTypes/MobWithLevelRequirements.cs" id="3_lohlh"]
+[ext_resource type="PackedScene" uid="uid://cumbpyv75fupy" path="res://Enemies/FastEnemy.tscn" id="4_x6js8"]
+[ext_resource type="PackedScene" uid="uid://c0jw6lw75odhn" path="res://Enemies/BigEnemy.tscn" id="5_lg2j6"]
+[ext_resource type="PackedScene" uid="uid://bfkdyb0s1x1u8" path="res://UI/UIScene.tscn" id="5_lohlh"]
+[ext_resource type="PackedScene" uid="uid://be7rkra4x5ma" path="res://Enemies/BossEnemy.tscn" id="6_lg2j6"]
 
 [sub_resource type="Resource" id="Resource_kilg5"]
 script = ExtResource("3_lohlh")
 mobPrefab = ExtResource("2_jwv4s")
 metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
 
+[sub_resource type="Resource" id="Resource_y30xb"]
+script = ExtResource("3_lohlh")
+mobPrefab = ExtResource("4_x6js8")
+levelRequirement = 40
+metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
+
+[sub_resource type="Resource" id="Resource_xhjei"]
+script = ExtResource("3_lohlh")
+mobPrefab = ExtResource("5_lg2j6")
+levelRequirement = 20
+metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
+
+[sub_resource type="Resource" id="Resource_6vvcf"]
+script = ExtResource("3_lohlh")
+mobPrefab = ExtResource("6_lg2j6")
+levelRequirement = 10
+metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
+
+[sub_resource type="Resource" id="Resource_cr6v8"]
+script = ExtResource("3_lohlh")
+mobPrefab = ExtResource("6_lg2j6")
+levelRequirement = 30
+metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
+
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_3mbwn")
-mobsWithLevelRequirements = Array[Object]([SubResource("Resource_kilg5")])
+mobsWithLevelRequirements = Array[Object]([SubResource("Resource_kilg5"), SubResource("Resource_y30xb"), SubResource("Resource_xhjei")])
+bossMobsWithLevelRequirements = Array[Object]([SubResource("Resource_6vvcf"), SubResource("Resource_cr6v8")])
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_2wl7v")]
+
+[node name="HUD" parent="." instance=ExtResource("5_lohlh")]
+
+[connection signal="Dead" from="Player" to="." method="OnPlayerDeath"]
+[connection signal="HealthChanged" from="Player" to="HUD" method="OnPlayerHealthChanged"]
+[connection signal="ReputationExpChanged" from="Player" to="HUD" method="OnReputationExpChanged"]
+[connection signal="ReputationUp" from="Player" to="." method="OnRepuUp"]
+[connection signal="ReputationUp" from="Player" to="HUD" method="OnReputationUp"]
+[connection signal="RepuUpDone" from="HUD" to="." method="OnRepuUpComplete"]
+[connection signal="StartGame" from="HUD" to="." method="NewGame"]

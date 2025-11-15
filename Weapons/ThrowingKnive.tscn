@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw0tra2iwbmh3"]
+
+[ext_resource type="Script" uid="uid://bbu0pp8tuomp8" path="res://Weapons/ThrowingKnive.cs" id="1_snpg1"]
+
+[node name="ThrowingKnive" type="Node2D"]
+script = ExtResource("1_snpg1")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2brohkxhgrss"]
+
+[ext_resource type="Texture2D" uid="uid://ck16iej2fusol" path="res://Assets/circle.png" id="1_p3lan"]
+[ext_resource type="Script" uid="uid://j51a36ytqag" path="res://Enemies/RepuOrb.cs" id="1_sti6o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3lan"]
+
+[node name="RepuOrb" type="Node2D" groups=["RepuOrb"]]
+script = ExtResource("1_sti6o")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.5803922, 0, 1, 1)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_p3lan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_p3lan")

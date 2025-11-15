@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd58ehy8cr4ay"]
+
+[ext_resource type="Script" uid="uid://dp5fbk6iiakp2" path="res://Weapons/BaseballBat.cs" id="1_rmrk1"]
+
+[node name="BaseballBat" type="Node2D"]
+script = ExtResource("1_rmrk1")

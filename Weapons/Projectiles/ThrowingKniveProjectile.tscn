@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccse3msbu3bpn"]
+
+[ext_resource type="Script" uid="uid://bmhl8ne5r2bml" path="res://Weapons/Projectiles/ThrowingKniveProjectile.cs" id="1_u0nx5"]
+[ext_resource type="Texture2D" uid="uid://ck16iej2fusol" path="res://Assets/circle.png" id="2_o0jww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0jww"]
+
+[node name="ThrowingKniveProjectile" type="Node2D"]
+script = ExtResource("1_u0nx5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_o0jww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o0jww")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
