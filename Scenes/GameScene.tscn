@@ -17,13 +17,13 @@ metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
 [sub_resource type="Resource" id="Resource_y30xb"]
 script = ExtResource("3_lohlh")
 mobPrefab = ExtResource("4_x6js8")
-levelRequirement = 40
+levelRequirement = 30
 metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
 
 [sub_resource type="Resource" id="Resource_xhjei"]
 script = ExtResource("3_lohlh")
 mobPrefab = ExtResource("5_lg2j6")
-levelRequirement = 20
+levelRequirement = 15
 metadata/_custom_type_script = "uid://dl42lyk3bfm0p"
 
 [sub_resource type="Resource" id="Resource_6vvcf"]

@@ -26,6 +26,8 @@ public partial class Player : Node2D
 	[Export]
 	public float StartAttackSpeed { get; set; } = 1;
 	[Export]
+	public float StartDamageBonus { get; set; } = 1;
+	[Export]
 	public WeaponNames[] WeaponNames;
 	[Export]
 	public Camera2D camera;
@@ -40,6 +42,7 @@ public partial class Player : Node2D
 	private float _reputationMultiplier;
 	private float _pickUpRadius;
 	private float _attackSpeed;
+	private float _damageBonus;
 
 	public float Health
 	{
@@ -49,6 +52,11 @@ public partial class Player : Node2D
 			_health = value;
 			EmitSignal(SignalName.HealthChanged, _health, MaxHealth);
 		}
+	}
+	public float DamageBonus 
+	{
+		get => _damageBonus;
+		set => _damageBonus = value;
 	}
 	public float MaxHealth 
 	{
@@ -197,6 +205,7 @@ public partial class Player : Node2D
 		ReputationMultiplier = StartReputationMultiplier;
 		PickUpRadius = StartPickUpRadius;
 		AttackSpeed = StartAttackSpeed;
+		DamageBonus = StartDamageBonus;
 		_isDead = false;
 	}
 
@@ -248,6 +257,9 @@ public partial class Player : Node2D
 				break;
 			case "IncreasePickupRadius":
 				PickUpRadius *= 1.1f;
+				break;
+			case "IncreaseDamageDealt":
+				DamageBonus *= 1.1f;
 				break;
 			case "UnlockKnuckles":
 				AddWeapon("Knuckles");

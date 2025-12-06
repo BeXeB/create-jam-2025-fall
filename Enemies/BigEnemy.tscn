@@ -7,7 +7,7 @@
 
 [node name="BigEnemy" type="Node2D" groups=["Mobs"]]
 script = ExtResource("1_yymmk")
-_maxHealth = 50.0
+_maxHealth = 30.0
 _movementSpeed = 160.0
 _damage = 20.0
 _experienceMultiplier = 5.0

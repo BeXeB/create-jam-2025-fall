@@ -41,7 +41,7 @@ public partial class BaseballBat : Node2D, IMeleeWeapon
 			DefaultColor = new Color(0f, 1f, 0f, 0.8f), // semi-transparent green
 			Closed = true
 		};
-		var segments = 20;
+		var segments = 3;
 		for (int i = 0; i <= segments; i++)
 		{
 			var dirAngle = dir.Length() > 0.001f ? dir.Angle() : 0f;
@@ -80,7 +80,7 @@ public partial class BaseballBat : Node2D, IMeleeWeapon
 
 				if (collider.GetParent() is IEnemy enemy)
 				{
-					enemy.Health -= Damage;
+					enemy.Health -= Damage * GetParent<Player>().DamageBonus;
 					if (enemy.Health <= 0)
 					{
 						enemy.Die();

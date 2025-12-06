@@ -53,7 +53,7 @@ public partial class ThrowingKnive : Node2D, IRangedWeapon
 			var projectileInstance = GD.Load<PackedScene>("res://Weapons/Projectiles/ThrowingKniveProjectile.tscn").Instantiate<IProjectile>();
 			(projectileInstance as Node2D).GlobalPosition = GlobalPosition;
 			GetTree().CurrentScene.AddChild(projectileInstance as Node2D);
-			projectileInstance.Launch(direction, _damage);	
+			projectileInstance.Launch(direction, _damage * GetParent<Player>().DamageBonus);	
 			return;
 		}
 		var angleStep = Spread / (ProjectileCount - 1);
@@ -66,7 +66,7 @@ public partial class ThrowingKnive : Node2D, IRangedWeapon
 			var projectileInstance = GD.Load<PackedScene>("res://Weapons/Projectiles/ThrowingKniveProjectile.tscn").Instantiate<IProjectile>();
 			(projectileInstance as Node2D).GlobalPosition = GlobalPosition;
 			GetTree().CurrentScene.AddChild(projectileInstance as Node2D);
-			projectileInstance.Launch(rotatedDirection, _damage);	
+			projectileInstance.Launch(rotatedDirection, _damage * GetParent<Player>().DamageBonus);	
 		}
 	}
 }

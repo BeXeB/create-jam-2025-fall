@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://b85q64fkpwhg2"]
 
-[ext_resource type="Texture2D" uid="uid://ck16iej2fusol" path="res://Assets/circle.png" id="1_3qydi"]
 [ext_resource type="Script" uid="uid://fwxsnm3nb08y" path="res://Player/Player.cs" id="1_q3lat"]
 [ext_resource type="Script" uid="uid://owpg5wj3cxr4" path="res://DataTypes/WeaponNames.cs" id="2_ddoul"]
 [ext_resource type="PackedScene" uid="uid://xjmbxxjq7nw3" path="res://Weapons/Knuckles.tscn" id="3_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://dd58ehy8cr4ay" path="res://Weapons/BaseballBat.tscn" id="4_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://bw0tra2iwbmh3" path="res://Weapons/ThrowingKnive.tscn" id="5_6ysni"]
+[ext_resource type="Texture2D" uid="uid://df81gk8uhfa7b" path="res://Assets/square.png" id="6_6ysni"]
 
 [sub_resource type="Resource" id="Resource_6ysni"]
 script = ExtResource("2_ddoul")
@@ -25,7 +25,7 @@ weaponPrefab = ExtResource("5_6ysni")
 name = "ThrowingKnive"
 metadata/_custom_type_script = "uid://owpg5wj3cxr4"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3qydi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlldt"]
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("camera") groups=["Player"]]
 script = ExtResource("1_q3lat")
@@ -38,10 +38,10 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Player Area" groups=["Player"]]
 modulate = Color(0, 0.4627451, 1, 1)
 scale = Vector2(0.13250001, 0.13250001)
-texture = ExtResource("1_3qydi")
+texture = ExtResource("6_6ysni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Area" groups=["Player"]]
-shape = SubResource("CircleShape2D_3qydi")
+shape = SubResource("RectangleShape2D_vlldt")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
 

@@ -21,7 +21,7 @@ public partial class Main : Node2D
 	[Export]
 	public float spawnRateMultiplierPerLevel = 0.1f;
 	[Export]
-	public float baseEnemyXpMuiltiplierPerLevel = 0.2f;
+	public float baseEnemyXpMuiltiplierPerLevel = 0.1f;
 	[Export]
 	public float enemyBaseHealthMultiplierPerLevel = 0.025f;
 	private float _timeToSpawn = 1;
@@ -58,7 +58,7 @@ public partial class Main : Node2D
 			var spawnPosition = new Vector2(Mathf.Cos(angleRad)*spawnRadius,Mathf.Sin(angleRad)*spawnRadius);
 			mob.Position = spawnPosition + player.Position;
 			var enemy = mob as IEnemy;
-			enemy.ExperienceMultiplier = 1 + (player.Reputation * baseEnemyXpMuiltiplierPerLevel); 
+			enemy.ExperienceMultiplier *= 1 + (player.Reputation * baseEnemyXpMuiltiplierPerLevel); 
 			enemy.MaxHealth *= 1 + (player.Reputation * enemyBaseHealthMultiplierPerLevel);
 			enemy.Health = enemy.MaxHealth;
 			AddChild(mob);
@@ -99,10 +99,11 @@ public partial class Main : Node2D
 			("Increase Attack Speed by 10%", "IncreaseAttackSpeed"),
 			("Increase Reputation Gain by 10%", "IncreaseReputationMultiplier"),
 			("Increase Pickup Radius by 10%", "IncreasePickupRadius"),
+			("Increase Damage Dealt by 10%", "IncreaseDamageDealt")
         ];
 		foreach (var weapon in player.weapons)
 		{
-			upgradeOptions.Add(($"Increase {weapon.WeaponName} Damage by 10%", $"Increase{weapon.WeaponName}Damage"));
+			// upgradeOptions.Add(($"Increase {weapon.WeaponName} Damage by 10%", $"Increase{weapon.WeaponName}Damage"));
 			if (weapon is MafiaGame.Interfaces.IMeleeWeapon)
 			{
 				upgradeOptions.Add(($"Increase {weapon.WeaponName} Range by 10%", $"Increase{weapon.WeaponName}Range"));
@@ -152,6 +153,7 @@ public partial class Main : Node2D
 	public void NewGame()
 	{
 		GetTree().CallGroup("Mobs", Node.MethodName.QueueFree);
+		GetTree().CallGroup("RepuOrb", Node.MethodName.QueueFree);
 		_isGameOver = false;
 		player.Start();
 	}

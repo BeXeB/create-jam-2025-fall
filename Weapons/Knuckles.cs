@@ -90,7 +90,7 @@ public partial class Knuckles : Node2D, IMeleeWeapon
 
 				if (colliderObj.GetParent() is IEnemy enemy)
 				{
-					enemy.Health -= Damage;
+					enemy.Health -= Damage * GetParent<Player>().DamageBonus;
 					if (enemy.Health <= 0)
 					{
 						enemy.Die();
